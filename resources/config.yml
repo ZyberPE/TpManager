@@ -1,0 +1,19 @@
+expire-time: 60
+
+messages:
+  player-not-found: "§cPlayer not found."
+
+  tpa-sent: "§aTeleport request sent to {player}"
+  tpa-received: "§e{player} wants to teleport to you. Use /tpaccept {player} or /tpdeny {player}"
+
+  tpahere-sent: "§aTeleport request sent asking {player} to come to you"
+  tpahere-received: "§e{player} wants you to teleport to them. Use /tpaccept {player} or /tpdeny {player}"
+
+  request-expired: "§cTeleport request expired."
+
+  tpaccepted: "§aTeleport request accepted."
+  tpdenied: "§cTeleport request denied."
+
+  no-request: "§cNo teleport request from that player."
+
+  tpall: "§eAll players have been teleported to you."
