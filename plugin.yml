@@ -1,0 +1,27 @@
+name: TpManager
+main: TpManager\Main
+version: 1.0.0
+api: 5.0.0
+author: ZyberPE
+
+commands:
+  tpa:
+    description: Send a teleport request
+    usage: "/tpa <player>"
+  tpahere:
+    description: Request player to teleport to you
+    usage: "/tpahere <player>"
+  tpaccept:
+    description: Accept teleport request
+    usage: "/tpaccept <player>"
+  tpdeny:
+    description: Deny teleport request
+    usage: "/tpdeny <player>"
+  tpall:
+    description: Teleport all players to you
+    usage: "/tpall"
+    permission: tpmanager.tpall
+
+permissions:
+  tpmanager.tpall:
+    default: op
