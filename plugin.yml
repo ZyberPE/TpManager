@@ -6,22 +6,44 @@ author: ZyberPE
 
 commands:
   tpa:
-    description: Send a teleport request
+    description: Send a teleport request to a player
     usage: "/tpa <player>"
+    permission: tpmanager.tpa
+
   tpahere:
-    description: Request player to teleport to you
+    description: Request a player to teleport to you
     usage: "/tpahere <player>"
+    permission: tpmanager.tpahere
+
   tpaccept:
-    description: Accept teleport request
+    description: Accept a teleport request
     usage: "/tpaccept <player>"
+    permission: tpmanager.tpaccept
+    aliases: [tpyes]
+
   tpdeny:
-    description: Deny teleport request
+    description: Deny a teleport request
     usage: "/tpdeny <player>"
+    permission: tpmanager.tpdeny
+    aliases: [tpno]
+
   tpall:
     description: Teleport all players to you
     usage: "/tpall"
     permission: tpmanager.tpall
 
 permissions:
+  tpmanager.tpa:
+    default: true
+
+  tpmanager.tpahere:
+    default: true
+
+  tpmanager.tpaccept:
+    default: true
+
+  tpmanager.tpdeny:
+    default: true
+
   tpmanager.tpall:
     default: op
