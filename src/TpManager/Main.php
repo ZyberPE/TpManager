@@ -102,16 +102,19 @@ class Main extends PluginBase{
                     return true;
                 }
 
-                $playerName = $args[0];
+                $target = $this->findPlayer($args[0]);
+
+                if(!$target){
+                    $sender->sendMessage($this->msg("player-not-found"));
+                    return true;
+                }
+
+                $targetName = $target->getName();
 
                 if(isset($this->tpaRequests[$sender->getName()]) &&
-                    strtolower($this->tpaRequests[$sender->getName()]) === strtolower($playerName)){
+                    strtolower($this->tpaRequests[$sender->getName()]) === strtolower($targetName)){
 
-                    $player = $this->findPlayer($playerName);
-
-                    if($player){
-                        $player->teleport($sender->getPosition());
-                    }
+                    $target->teleport($sender->getPosition());
 
                     unset($this->tpaRequests[$sender->getName()]);
                     $sender->sendMessage($this->msg("tpaccepted"));
@@ -120,13 +123,9 @@ class Main extends PluginBase{
                 }
 
                 if(isset($this->tpaHereRequests[$sender->getName()]) &&
-                    strtolower($this->tpaHereRequests[$sender->getName()]) === strtolower($playerName)){
+                    strtolower($this->tpaHereRequests[$sender->getName()]) === strtolower($targetName)){
 
-                    $player = $this->findPlayer($playerName);
-
-                    if($player){
-                        $sender->teleport($player->getPosition());
-                    }
+                    $sender->teleport($target->getPosition());
 
                     unset($this->tpaHereRequests[$sender->getName()]);
                     $sender->sendMessage($this->msg("tpaccepted"));
@@ -135,6 +134,7 @@ class Main extends PluginBase{
                 }
 
                 $sender->sendMessage($this->msg("no-request"));
+
             return true;
 
 
@@ -145,13 +145,26 @@ class Main extends PluginBase{
                     return true;
                 }
 
-                if(isset($this->tpaRequests[$sender->getName()])){
+                $target = $this->findPlayer($args[0]);
+
+                if(!$target){
+                    $sender->sendMessage($this->msg("player-not-found"));
+                    return true;
+                }
+
+                $targetName = $target->getName();
+
+                if(isset($this->tpaRequests[$sender->getName()]) &&
+                    strtolower($this->tpaRequests[$sender->getName()]) === strtolower($targetName)){
+
                     unset($this->tpaRequests[$sender->getName()]);
                     $sender->sendMessage($this->msg("tpdenied"));
                     return true;
                 }
 
-                if(isset($this->tpaHereRequests[$sender->getName()])){
+                if(isset($this->tpaHereRequests[$sender->getName()]) &&
+                    strtolower($this->tpaHereRequests[$sender->getName()]) === strtolower($targetName)){
+
                     unset($this->tpaHereRequests[$sender->getName()]);
                     $sender->sendMessage($this->msg("tpdenied"));
                     return true;
